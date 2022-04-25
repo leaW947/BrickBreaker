@@ -75,9 +75,10 @@ class Ball{
 
         //down
         /////lost ball//////
-        if(this.y+this.radius>this.gameplayService.canvas.height){
+        if(this.y-this.radius>this.gameplayService.canvas.height){
 
             if(!this.bOnShield){
+                this.sounds.lost.play();
                 this.gameplayService.nbBall-=1;
                 this.maxSpeed=5;
     
@@ -87,8 +88,6 @@ class Ball{
     
                     this.x=this.initialX;
                     this.y=this.initialY;
-
-                    this.sounds.lost.play();
     
                 }else{
                     //////////gameover///////////////
@@ -218,13 +217,16 @@ class Ball{
 
     draw(pCtx){
 
-        this.lstTrail.forEach(trail=>{
+        if(this.vx!=0 || this.vy!=0){
+            this.lstTrail.forEach(trail=>{
 
-            drawCircle(pCtx,trail.x,trail.y,this.radius,this.colorTrail+","+trail.alpha,
-            this.colorTrail+","+trail.alpha);
-
-        });
-
+                drawCircle(pCtx,trail.x,trail.y,this.radius,this.colorTrail+","+trail.alpha,
+                this.colorTrail+","+trail.alpha);
+    
+            });
+    
+        }
+      
         drawCircle(pCtx,this.x,this.y,this.radius,"255,0,0","255,0,0");
     }
 

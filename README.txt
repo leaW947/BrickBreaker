@@ -9,7 +9,7 @@ Pour les graphismes je les ai réalisé moi-même avec PixelEdit.
 ---------Déroulement du jeu----------------
 
 	----menu----
-Quand on lance le projet, on arrive directement sur l'écran de menu. Cette écran est 
+Quand on lance le projet, on arrive directement sur l'écran de menu. Cet écran est 
 très simple: j'ai juste ajouté un titre et une petite phrase en dessous pour indiquer
 au joueur qu'il faut cliquer sur la touche entrée du clavier pour jouer.
 
