@@ -75,7 +75,7 @@ class Ball{
 
         //down
         /////lost ball//////
-        if(this.y-this.radius>this.gameplayService.canvas.height){
+        if(this.y+this.radius>this.gameplayService.canvas.height){
 
             if(!this.bOnShield){
                 this.sounds.lost.play();
