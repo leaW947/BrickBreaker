@@ -63,7 +63,7 @@ Selon l'objet qu'on ramasse, on aura une aide différente:
 -le losange(objet violet): un bouclier ce positionne en bas de l'écran pour permettre
 à la balle de rebondir dessus. Comme cela on a plus besoin de la raquette pour empêcher
 la balle de dépasser le bas de l'écran. Attention cette aide est temporaire, au 
-bout d'un lapse de temps, le bouclier s'efface.
+bout de trois collisions avec la balle, le bouclier s'efface.
 
 -le carré(objet vert): permet à la raquette de s'agrandir(jusqu'à un certain point).
 
@@ -73,8 +73,8 @@ même impact sur cette brique que la balle.
 
 -l'éclair(objet bleu): permet à la balle d'augmenter sa vitesse lorsque qu'elle
 rebondit sur la raquette après avoir ramasser cette objet. Attention cette aide
-est temporaire, après un lapse de temps la balle retrouve sa vitesse initiale.
-	
+est temporaire, après trois collisions avec la raquette, la balle retrouve sa 
+vitesse initiale.	
 
 Si on arrive a terminer un niveau, on passe automatiquement au niveau suivant.
 

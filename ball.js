@@ -23,6 +23,9 @@ class Ball{
 
         this.lstTrail=[];
 
+        this.nbColShield=3;
+        this.nbColSpeed=3;
+
         this.sounds={
             colBrick:this.gameplayService.assetManager.getSound("sounds/arkanoid_brique_dure.wav"),
             lost:this.gameplayService.assetManager.getSound("sounds/arkanoid_perdu2.wav"),
@@ -103,6 +106,7 @@ class Ball{
                 this.y=this.oldY;
                 this.vy*=-1;
                 bOnPlaySndColScreen=true;
+                this.nbColShield-=1;
             }
           
         }
@@ -121,12 +125,8 @@ class Ball{
                                         pRacket.width,pRacket.height);
 
             ////shield////
-             if(pRacket.bOnShield && !this.bOnShield){
+            if(pRacket.bOnShield && !this.bOnShield){
                 this.bOnShield=true;
-            }else{
-                if(!pRacket.bOnShield){
-                    this.bOnShield=false;
-                }
             }
 
 
@@ -141,16 +141,19 @@ class Ball{
 
                 /////speed*2///////
                 if(pRacket.bOnUpSpeed && this.maxSpeed<=5){
-                    this.maxSpeed=this.maxSpeed*2;
                     this.colorTrail="255,255,255";
-
-                }else{
-                    if(!pRacket.bOnUpSpeed){
-                        this.maxSpeed=5;
-                        this.colorTrail="255,0,0";
-                    }
+                    this.maxSpeed*=2;
+                
+                }else if(!pRacket.bOnUpSpeed){
+                    this.maxSpeed=5;
+                    this.colorTrail="255,0,0";
                 }
 
+                if(pRacket.bOnUpSpeed && this.maxSpeed>5){
+                    this.nbColSpeed-=1;
+                }
+
+              
                 if(this.x<this.gameplayService.canvas.width/2){
                 
                     ///part 1
@@ -211,6 +214,19 @@ class Ball{
             if(myTrail.nbLives<=0){
                 this.lstTrail.splice(i,1)
             }
+        }
+
+        ///////////end shield option
+        if(this.nbColShield<=0){
+            this.nbColShield=3;
+            pRacket.bOnShield=false;
+            this.bOnShield=false;
+        }
+
+        //////////end speed*2 option
+        if(this.nbColSpeed<=0){
+            this.nbColSpeed=3;
+            pRacket.bOnUpSpeed=false;
         }
 
     }
